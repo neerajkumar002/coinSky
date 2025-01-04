@@ -5,7 +5,7 @@ const Layout = () => {
   return (
     <div className="bg-[#1E1E1E] text-[#E0E0E0] w-full min-h-screen flex">
       <Sidebar />
-      <div>
+      <div className=" w-full px-5">
         <Outlet />
       </div>
     </div>
