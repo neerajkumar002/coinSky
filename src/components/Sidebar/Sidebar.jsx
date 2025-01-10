@@ -1,10 +1,10 @@
 import { HandCoins, Home, TrendingUp } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ( ) => {
   return (
-    <div className="  w-[250px]">
-      <h2 className="text-[#FFB9B3] font-bold text-3xl px-3 py-6 flex  items-center gap-3">
+    <div className="   w-[250px]  py-3   ">
+      <h2 className="text-[#FFB9B3] font-bold text-3xl px-3   flex  items-center gap-3">
         <HandCoins />
         CoinSky
       </h2>
