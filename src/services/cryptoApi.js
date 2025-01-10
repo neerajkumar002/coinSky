@@ -11,9 +11,20 @@ export const cryptoApi = createApi({
   }),
   endpoints: (builder) => ({
     getCoinList: builder.query({
-      query: (vs_currency) => `/markets?vs_currency=${vs_currency}`,
+      query: (vs_currency) => `/coins/markets?vs_currency=${vs_currency}`,
+    }),
+    getCoinById: builder.query({
+      query: (coinId) => `/coins/${coinId}`,
+    }),
+    getCoinHistoryData: builder.query({
+      query: ({ coinId, vs_currency = "usd", days = 7 }) =>`/coins/${coinId}/market_chart?vs_currency=${vs_currency}&days=${days}&interval=daily`
+      
     }),
   }),
 });
 
-export const { useGetCoinListQuery } = cryptoApi;
+export const {
+  useGetCoinListQuery,
+  useGetCoinByIdQuery,
+  useLazyGetCoinHistoryDataQuery,
+} = cryptoApi;

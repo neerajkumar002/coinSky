@@ -1,6 +1,7 @@
 import { RefreshCcw } from "lucide-react";
 import Card from "../../components/Trending";
 import { useGetTrendingCoinsQuery } from "../../services/trendingCoinApi";
+import TrendingSkeletons from "../../components/Skeletons/TrendingSkeletons";
 
 const TrendingCoins = () => {
   const {
@@ -10,10 +11,26 @@ const TrendingCoins = () => {
     isFetching,
   } = useGetTrendingCoinsQuery();
 
-  console.log(coinsList?.coins[0]?.item);
+  if (isFetching)
+    return (
+      <div className="flex flex-col lg:grid lg:grid-cols-3 gap-5 lg:place-items-center">
+        {new Array(15).fill(null).map((_, index) => (
+          <TrendingSkeletons key={index} />
+        ))}
+        ;
+      </div>
+    );
 
-  if (isFetching) return "Loading......";
-  if (isLoading) return "Loading......";
+  if (isLoading)
+    return (
+      <div className="flex flex-col lg:grid lg:grid-cols-3 gap-5 lg:place-items-center">
+        {new Array(15).fill(null).map((_, index) => (
+          <TrendingSkeletons key={index} />
+        ))}
+        ;
+      </div>
+    );
+
   return (
     <div className="px-5 py-5 w-full flex gap-3 flex-col">
       <div className="flex justify-between lg:px-5 py-1 font-semibold text-3xl">
@@ -41,5 +58,3 @@ const TrendingCoins = () => {
 };
 
 export default TrendingCoins;
-
- 
