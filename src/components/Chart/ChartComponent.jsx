@@ -39,9 +39,9 @@ const ChartComponent = ({ id }) => {
   if (isFetching) return "loading...";
 
   return (
-    <div>
-      <div>
-        <div className="bg-[#2f2f2f] mb-4  flex justify-cente   gap-1 px-1  py-2 rounded-md">
+ 
+      <div className="py-6">
+        <div className="bg-[#2f2f2f] mb-4  flex justify-between   gap-1 px-1  py-2 rounded-md lg:w-[500px]">
           <button
             onClick={() => setType("prices")}
             className={`${
@@ -91,11 +91,11 @@ const ChartComponent = ({ id }) => {
             30D
           </button>
         </div>
-        <div className="lg:w-[500px]">
+        <div className="lg:w-full">
           <Chart data={chartData} type={type} />
         </div>
       </div>
-    </div>
+ 
   );
 };
 
