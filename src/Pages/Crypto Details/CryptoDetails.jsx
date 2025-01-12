@@ -13,11 +13,16 @@ const usDollor = new Intl.NumberFormat("en-US", {
 const CryptoDetails = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetCoinByIdQuery(id);
- 
+
   if (isLoading) return "loading...";
 
   return (
-    <div className="w-full py-6 flex flex-col lg:flex-row gap-4 items-center justify-between lg:px-56">
+    <div className="w-full py-5   ">
+      {/* line chart */}
+      <div>
+        <ChartComponent id={id} />
+      </div>
+
       <div className="w-full flex flex-col gap-4">
         <div className="flex items-center gap-2">
           <img
@@ -40,71 +45,60 @@ const CryptoDetails = () => {
         {/* market data */}
 
         <div className="   lg:w-[700px]  flex flex-col gap-2">
-          {/* line */}
-          <HighLowIndicator
-            currentPrice={data?.market_data?.current_price?.usd}
-            high={data?.market_data?.high_24h?.usd}
-            low={data?.market_data?.low_24h?.usd}
-          />
-          <div className="flex flex-col lg:flex-row  gap-10 justify-between px-3 py-2">
-            <div className="flex flex-col">
-              <span>Low 24H</span>
-              <span className="text-white font-semibold text-2xl">
+          <div className=" ">
+            {/* line */}
+            <HighLowIndicator
+              currentPrice={data?.market_data?.current_price?.usd}
+              high={data?.market_data?.high_24h?.usd}
+              low={data?.market_data?.low_24h?.usd}
+            />
+            <div className="flex justify-evenly py-1  ">
+              <span className="w-[400px] ">
                 {usDollor.format(data?.market_data?.low_24h?.usd)}
               </span>
-            </div>
-            <div className="flex flex-col">
-              <span>High 24H</span>
-              <span className="text-white font-semibold text-2xl">
+              <span className="w-[100px]">Low 24H</span>
+              <span className="w-[400px] text-right ">
                 {usDollor.format(data?.market_data?.high_24h?.usd)}
               </span>
             </div>
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-10 justify-between px-3 py-2">
-            <div className="flex flex-col">
+          <div className="flex flex-col gap-6 ">
+            <div className="flex justify-between border-b-[0.5px] border-gray-500/60 py-1 ">
               <span>Market Cap</span>
-              <span className="text-white font-semibold text-2xl">
+              <span className="text-white font-semibold  ">
                 {usDollor.format(data?.market_data?.market_cap?.usd)}
               </span>
             </div>
-            <div className="flex flex-col">
+            <div className="flex justify-between border-b-[0.5px] border-gray-500/60 py-1 ">
               <span>Fully Diluted Valuation</span>
-              <span className="text-white font-semibold text-2xl">
+              <span className="text-white font-semibold  ">
                 {usDollor.format(
                   data?.market_data?.fully_diluted_valuation?.usd
                 )}
               </span>
             </div>
-          </div>
-          <div className="flex flex-col lg:flex-row  gap-10   justify-between px-3 py-2">
-            <div className="flex flex-col">
+            <div className="flex justify-between border-b-[0.5px] border-gray-500/60 py-1 ">
               <span>Total Volume</span>
-              <span className="text-white font-semibold text-2xl">
+              <span className="text-white font-semibold  ">
                 {usDollor.format(data?.market_data?.total_volume?.usd)}
               </span>
             </div>
-            <div className="flex flex-col">
+            <div className="flex justify-between border-b-[0.5px] border-gray-500/60 py-1 ">
               <span>Max Supply</span>
-              <span className="text-white font-semibold text-2xl">
+              <span className="text-white font-semibold  ">
                 {usDollor.format(data?.market_data?.max_supply)}
               </span>
             </div>
-          </div>
 
-          <div className="flex flex-col lg:flex-row justify-between px-3 py-2">
-            <div className="flex flex-col">
+            <div className="flex justify-between border-b-[0.5px] border-gray-500/60 py-1 ">
               <span>Circulatig Supply</span>
-              <span className="text-white font-semibold text-2xl">
+              <span className="text-white font-semibold  ">
                 {usDollor.format(data?.market_data?.circulating_supply)}
               </span>{" "}
             </div>
           </div>
         </div>
-      </div>
-      {/* line chart */}
-      <div>
-        <ChartComponent id={id} />
       </div>
     </div>
   );
