@@ -12,7 +12,7 @@ const HighLowIndicator = ({ currentPrice, high, low }) => {
   }, [currentPrice, high, low]);
 
   return (
-    <div className="flex  ">
+    <div className="flex   ">
       <span
         className="bg-red-600 h-1.5 rounded-l-lg w-[50%]"
         style={{ width: `${100 - colorValue}%` }}
