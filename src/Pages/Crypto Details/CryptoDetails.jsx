@@ -1,10 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useGetCoinByIdQuery } from "../../services/cryptoApi";
-import millify from "millify";
-import Chart from "../../components/Chart/Chart";
 import ChartComponent from "../../components/Chart/ChartComponent";
 import HighLowIndicator from "../../components/Indicator/HighLowIndicator";
 import { FileText, Link } from "lucide-react";
+import Loader from "../../components/Loader/Loader";
 
 const usDollor = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -15,13 +14,14 @@ const CryptoDetails = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetCoinByIdQuery(id);
 
-  if (isLoading) return <div className=" "></div>;
+  if (isLoading) return <Loader />;
 
   return (
-    <div className="w-full py-5   ">
+    <div className="w-full py-3  ">
       {/* line chart */}
       <div>
-        <ChartComponent id={id} />
+        {" "}
+        <ChartComponent id={id} />{" "}
       </div>
 
       <div className="flex flex-col lg:flex-row lg:justify-between">
@@ -46,7 +46,7 @@ const CryptoDetails = () => {
 
           {/* market data */}
 
-          <div className="lg:w-[700px]  flex flex-col gap-2">
+          <div className="w-[400px] lg:w-[700px]  flex flex-col gap-2">
             <div className=" ">
               {/* line */}
               <HighLowIndicator
@@ -102,7 +102,7 @@ const CryptoDetails = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-4 lg:pr-10">
+        <div className=" flex flex-col gap-4 lg:pr-10 pr-3">
           <h3 className="text-3xl mt-28 ">Coin Information</h3>
           <div className="lg:w-[700px]  flex flex-col gap-2">
             <div className="flex flex-col gap-6 ">
