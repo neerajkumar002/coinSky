@@ -13,7 +13,7 @@ const TrendingCoins = () => {
 
   if (isFetching)
     return (
-      <div className="flex flex-col lg:grid lg:grid-cols-3 gap-5 lg:place-items-center">
+      <div className="flex flex-col lg:grid lg:grid-cols-3 gap-5 py-9 lg:place-items-center">
         {new Array(15).fill(null).map((_, index) => (
           <TrendingSkeletons key={index} />
         ))}
@@ -23,7 +23,7 @@ const TrendingCoins = () => {
 
   if (isLoading)
     return (
-      <div className="flex flex-col lg:grid lg:grid-cols-3 gap-5 lg:place-items-center">
+      <div className="flex flex-col lg:grid lg:grid-cols-3 gap-5   lg:place-items-center">
         {new Array(15).fill(null).map((_, index) => (
           <TrendingSkeletons key={index} />
         ))}
@@ -32,7 +32,7 @@ const TrendingCoins = () => {
     );
 
   return (
-    <div className="px-5 py-5 w-full flex gap-3 flex-col">
+    <div className="px-5  py-2 w-full flex gap-3 flex-col">
       <div className="flex justify-between lg:px-5 py-1 font-semibold text-3xl">
         <h1 className="text-[#FFB9B3] text-xl">Trending</h1>
         <button onClick={() => refetch()} className="text-[#FFB9B3]">
