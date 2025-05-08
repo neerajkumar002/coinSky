@@ -2,9 +2,12 @@ import { useGetCoinListQuery } from "../../services/cryptoApi";
 import millify from "millify";
 import Table from "../../components/table/Table";
 import { Link } from "react-router-dom";
+import Loader from "../../components/Loader/Loader";
 
 const Home = () => {
   const { data: coinList, isLoading } = useGetCoinListQuery("usd");
+
+ 
 
   const tableData =
     coinList?.map((coinData, index) => ({
@@ -41,10 +44,10 @@ const Home = () => {
     { accessorKey: "market_cap", header: "Market Cap Changes" },
   ];
 
-  if (isLoading) return "loading...";
+  if (isLoading) return <Loader />;
 
   return (
-    <div className="py-6">
+    <div className=" py-3">
       <Table data={tableData} columns={columns} />
     </div>
   );

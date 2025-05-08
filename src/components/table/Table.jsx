@@ -1,6 +1,7 @@
 import {
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
@@ -10,36 +11,40 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+import { useState } from "react";
 
 const Table = ({ data, columns }) => {
   const table = useReactTable({
     data,
     columns,
+
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   });
 
   return (
-    <>
-      <div className="filter-and-search lg:flex lg:justify-end">
+    <div className=" ">
+      {/* <div className="filter-and-search lg:flex lg:justify-end">
         <div className="bg-[#383838]  lg:w-[400px]  rounded">
           <input
             type="text"
-            placeholder="Search Here.."
+            placeholder="Search Here.." 
             className="bg-transparent  focus:outline-[#FFB9B3]  focus:outline  rounded px-3 py-2 w-full"
           />
         </div>
-      </div>
-      <div className="w-full  py-5 overflow-auto">
+      </div> */}
+      <div className="w-full    overflow-auto">
         <table className="table-auto w-full border border-[#383838] border-collapse rounded  ">
           <thead className="border border-[#383838]   ">
-
             {table.getHeaderGroups().map((headerGroup) => {
               return (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => {
                     return (
-                      <th key={header.id} className="text-start text-sm  py-2 pl-4">
+                      <th
+                        key={header.id}
+                        className="text-start text-sm  py-2 pl-4"
+                      >
                         {flexRender(
                           header.column.columnDef.header,
                           header.getContext()
@@ -112,7 +117,7 @@ const Table = ({ data, columns }) => {
           <ChevronLast />
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,7 +1,7 @@
 const Card = ({ id, name, price, image, marketCap, score }) => {
-  console.log(image)
+   
   return (
-    <div className="bg-[#303030] flex items-center gap-8  lg:w-[500px] h-[140px] rounded-md px-4 ">
+    <div className="bg-[#303030] flex items-center gap-8  lg:w-[450px] h-[140px] rounded-md px-4 ">
       <div className="w-[60px] ">
         <img
           src={
